@@ -27,9 +27,9 @@
 	<div class="card-content">
 		<h2>First, enter some personal details.</h2>
 		<form id="details-form">
-			<p>Name:</p>
+			<label for="name-input">Name:</label>
 			<input id="name-input" type="text" placeholder="Your Username" required />
-			<p>Age:</p>
+			<label for="age-input">Age:</label>
 			<div id="age-number">
 				<button type="button" id="age-dec-btn" class="age-incdec unselectable-text">-</button>
 				<input id="age-input" name="amount" type="number" min="0" value="0" required/>
@@ -53,10 +53,10 @@
 	<div class="card-content">
 		<h2>Next, personalize your profile.</h2>
 		<form id="moredetails-form">
-			<p>Favorite Hobby:</p>
+			<label for="hobby-input">Favorite Hobby:</label>
 			<input id="hobby-input" type="text" placeholder="Your Favorite Hobby" required />
-			<p>Profile Description:</p>
-			<textarea id="description-input" type="text" maxlength="270" placeholder="Your Profile Description" required></textarea>
+			<label for="description-input">Profile Description:</label>
+			<textarea id="description-input" maxlength="270" placeholder="Your Profile Description" required></textarea>
 		</form>
 	</div>
 	<div class="button-container">
@@ -75,14 +75,14 @@
 	<div class="card-content">
 		<h2>Next, choose your profile picture:</h2>
 		<div id="pfp-options">
-			<img class="pfp"  src="images/pfp1.jpg">
-			<img class="pfp"  src="images/pfp2.jpg">
-			<img class="pfp"  src="images/pfp3.jpg">
+			<img class="pfp" alt="Blue colored mountain scenery with lake." src="images/pfp1.jpg">
+			<img class="pfp" alt="Green colored mountain scenery with trees and an overpowering yellow sunshine." src="images/pfp2.jpg">
+			<img class="pfp" alt="Greyscale mountain scenery with a mostly black colored landscape." src="images/pfp3.jpg">
 		</div>
 		<form id="picture-form">
-			<input id="picture-input1" type="radio" name="pfp" value="pfp1" required>
-			<input id="picture-input2" type="radio" name="pfp" value="pfp2">
-			<input id="picture-input3" type="radio" name="pfp" value="pfp3">
+			<input id="picture-input1" type="radio" name="pfp" value="pfp1" aria-label="pfp1" required>
+			<input id="picture-input2" type="radio" name="pfp" value="pfp2" aria-label="pfp2" >
+			<input id="picture-input3" type="radio" name="pfp" value="pfp3" aria-label="pfp3" >
 		</form>
 	</div>
 	<div class="button-container">
@@ -102,7 +102,7 @@
 	<div class="card-content">
 		<h2>Next, choose your favorite color:</h2>
 		<div id="color-container">
-			<p>Color picker:</p>
+			<label for="color-picker">Favorite Color:</label>
 			<input type="color" id="color-picker">
 		</div>
 	</div>
@@ -122,7 +122,7 @@
 	<div class="card-content">
 		<h2>Your Profile</h2>
 		<div id="profile-container">
-			<img id="profileImg" class="pfp" src="images/pfp1.jpg">
+			<img id="profileImg" class="pfp" alt="The picture you've selected." src="images/pfp1.jpg">
 			<h3>Name: <span id="userNameDisplay">none</span></h3>
 			<h3>Age: <span id="ageDisplay">none</span></h3>
 			<h3>Favorite Hobby: <span id="hobbyDisplay">none</span></h3>
@@ -135,7 +135,7 @@
 		</div>
 	</div>
 	<div class="button-container" id="restart-container">
-		<a class="button next-button unselectable-text" id="restart" onclick="nextPage()">
+		<a class="button next-button unselectable-text" onclick="nextPage()">
 			<p>Restart</p>
 			<span class="icon-container"><span class="arrows">&gt;&gt;&gt;</span></span>
 		</a>
@@ -217,8 +217,7 @@
 			console.log("Page switched successfully!")
 			console.log("Current User Data:", userData);
 		} else if (currentCard.id === "color-card") {
-			const picker = document.getElementById("color-picker").value;
-			userData.color = picker;
+			userData.color = document.getElementById("color-picker").value;
 
 			document.getElementById("profileImg").src = `images/${userData.pfp}.jpg`;
 			document.getElementById("userNameDisplay").textContent = userData.name;
