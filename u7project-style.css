@@ -372,4 +372,9 @@ textarea {
 	height: 75px;
 	margin: auto;
 	border-radius: 17px;
+
+}
+
+#restart-container {
+	justify-content: center;
 }
